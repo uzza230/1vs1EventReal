@@ -368,6 +368,11 @@ details[open] > :not(summary){animation:mDrop .4s var(--ease) backwards}
     transition-duration:.01ms!important;transition-delay:0s!important;
   }
 }
+
+/* มือถือ: การ์ดรางวัลแต่ละใบสูงตามเนื้อหาของตัวเอง ไม่ยืดตามใบข้าง ๆ ตอนกางรายละเอียด */
+@media(max-width:859px){
+  .podium{align-items:start}
+}
 </style>
 </head>
 <body>
@@ -450,17 +455,17 @@ details[open] > :not(summary){animation:mDrop .4s var(--ease) backwards}
     <p class="prize-h">ชิงเงินรางวัลการแข่งขัน รวม 6,000 บาท</p>
     <div class="podium">
       <div class="pc p1" tabindex="0" role="button" aria-expanded="false"><div class="n">1</div><p class="t">รางวัลชนะเลิศอันดับ 1</p>
-        <div class="amt"><b>3,000 บาท</b></div><div class="step">1st PLACE PODIUM</div><span class="hint"><span class="h-touch">แตะเพื่อดูรายละเอียด</span><span class="h-mouse">ชี้เมาส์เพื่อดูรายละเอียด</span></span><div class="detail"><b>รางวัลชนะเลิศอันดับ 1</b><ul><li>เงินรางวัลคู่ละ 3,000 บาท</li><li>เหรียญรางวัล</li><li>เกียรติบัตร</li></ul></div></div>
+        <div class="amt"><b>3,000 บาท</b></div><div class="step">1st PLACE PODIUM</div><span class="hint"><span class="h-touch">แตะเพื่อดูรายละเอียด</span><span class="h-mouse">ชี้เมาส์เพื่อดูรายละเอียด</span></span><div class="detail"><b>รางวัลชนะเลิศอันดับ 1</b><ul><li>เงินรางวัล 3,000 บาท</li><li>เหรียญรางวัล</li><li>เกียรติบัตร</li></ul></div></div>
       <div class="pc p2" tabindex="0" role="button" aria-expanded="false"><div class="n">2</div><p class="t">รองชนะเลิศอันดับ 1</p>
-        <div class="amt"><b>1,500 บาท</b></div><div class="step">PODIUM STEP #2</div><span class="hint"><span class="h-touch">แตะเพื่อดูรายละเอียด</span><span class="h-mouse">ชี้เมาส์เพื่อดูรายละเอียด</span></span><div class="detail"><b>รางวัลรองชนะเลิศอันดับ 1</b><ul><li>เงินรางวัลคู่ละ 1,500 บาท</li><li>เหรียญรางวัล</li><li>เกียรติบัตร</li></ul></div></div>
+        <div class="amt"><b>1,500 บาท</b></div><div class="step">PODIUM STEP #2</div><span class="hint"><span class="h-touch">แตะเพื่อดูรายละเอียด</span><span class="h-mouse">ชี้เมาส์เพื่อดูรายละเอียด</span></span><div class="detail"><b>รางวัลรองชนะเลิศอันดับ 1</b><ul><li>เงินรางวัล 1,500 บาท</li><li>เหรียญรางวัล</li><li>เกียรติบัตร</li></ul></div></div>
       <div class="pc p3" tabindex="0" role="button" aria-expanded="false"><div class="n">3</div><p class="t">รองชนะเลิศอันดับ 2</p>
-        <div class="amt"><b>500 บาท</b></div><div class="step">PODIUM STEP #3</div><span class="hint"><span class="h-touch">แตะเพื่อดูรายละเอียด</span><span class="h-mouse">ชี้เมาส์เพื่อดูรายละเอียด</span></span><div class="detail"><b>รางวัลรองชนะเลิศอันดับ 2</b><ul><li>เงินรางวัลคู่ละ 500 บาท</li><li>เหรียญรางวัล</li><li>เกียรติบัตร</li></ul></div></div>
+        <div class="amt"><b>500 บาท</b></div><div class="step">PODIUM STEP #3</div><span class="hint"><span class="h-touch">แตะเพื่อดูรายละเอียด</span><span class="h-mouse">ชี้เมาส์เพื่อดูรายละเอียด</span></span><div class="detail"><b>รางวัลรองชนะเลิศอันดับ 2</b><ul><li>เงินรางวัล 500 บาท</li><li>เหรียญรางวัล</li><li>เกียรติบัตร</li></ul></div></div>
     </div>
 
     <p class="pop-h">รางวัลได้รับความนิยม – 2 รางวัล Popular Vote</p>
     <div class="pops">
-      <div class="pop"><div><b>ได้รับความนิยม 1 (อันดับ 4 ร่วม)</b><small>เงินรางวัลคู่ละ 500 บาท (คนละ 250 บาท)</small><em>Popular Vote#1</em></div></div>
-      <div class="pop"><div><b>ได้รับความนิยม 2 (อันดับ 4 ร่วม)</b><small>เงินรางวัลคู่ละ 500 บาท (คนละ 250 บาท)</small><em>Popular Vote#2</em></div></div>
+      <div class="pop"><div><b>ได้รับความนิยม 1 (อันดับ 4 ร่วม)</b><small>เงินรางวัล 500 บาท (คนละ 250 บาท)</small><em>Popular Vote#1</em></div></div>
+      <div class="pop"><div><b>ได้รับความนิยม 2 (อันดับ 4 ร่วม)</b><small>เงินรางวัล 500 บาท (คนละ 250 บาท)</small><em>Popular Vote#2</em></div></div>
     </div>
   </section>
 
