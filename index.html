@@ -206,6 +206,168 @@ details p{padding:0 14px 14px;color:var(--muted);font-size:.93rem}
   #home .chip small{font-size:.84rem}
   #home .chip b{font-size:1.1rem}
 }
+
+/* =====================================================
+   SMOOTH MOTION LAYER  (เพิ่มเฉพาะ animation/transition ไม่แก้ดีไซน์เดิม)
+   ===================================================== */
+:root{
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  interpolate-size:allow-keywords; /* ให้ height:auto เคลื่อนไหวได้ (เบราว์เซอร์ที่รองรับ) */
+}
+html{scroll-behavior:smooth}
+
+/* ---------- 1) สลับแท็บ: แต่ละส่วนค่อย ๆ เลื่อนขึ้นและจางเข้า ---------- */
+@keyframes mRise{
+  from{opacity:0;transform:translateY(14px)}
+  to{opacity:1;transform:none}
+}
+@keyframes mFade{
+  from{opacity:0}
+  to{opacity:1}
+}
+.tab.on > *:not(.hero-txt),
+#home.on .hero-txt > *{
+  animation:mRise .55s var(--ease-out) backwards;
+}
+.tab.on > *:nth-child(1){animation-delay:0s}
+.tab.on > *:nth-child(2){animation-delay:.05s}
+.tab.on > *:nth-child(3){animation-delay:.1s}
+.tab.on > *:nth-child(4){animation-delay:.15s}
+.tab.on > *:nth-child(5){animation-delay:.2s}
+.tab.on > *:nth-child(6){animation-delay:.25s}
+.tab.on > *:nth-child(7){animation-delay:.3s}
+.tab.on > *:nth-child(n+8){animation-delay:.35s}
+#home.on .hero-txt > *:nth-child(1){animation-delay:0s}
+#home.on .hero-txt > *:nth-child(2){animation-delay:.06s}
+#home.on .hero-txt > *:nth-child(3){animation-delay:.12s}
+#home.on .hero-txt > *:nth-child(4){animation-delay:.18s}
+#home.on .hero-txt > *:nth-child(5){animation-delay:.24s}
+#home.on .hero-txt > *:nth-child(n+6){animation-delay:.3s}
+
+/* การ์ดรางวัลโผล่ไล่ทีละใบ */
+#info.on .podium > .pc{animation:mRise .6s var(--ease-out) backwards}
+#info.on .podium > .p1{animation-delay:.12s}
+#info.on .podium > .p2{animation-delay:.2s}
+#info.on .podium > .p3{animation-delay:.28s}
+#info.on .pops > .pop{animation:mRise .55s var(--ease-out) backwards}
+#info.on .pops > .pop:nth-child(1){animation-delay:.34s}
+#info.on .pops > .pop:nth-child(2){animation-delay:.4s}
+#home.on .cd-grid > div{animation:mRise .5s var(--ease-out) backwards}
+#home.on .cd-grid > div:nth-child(1){animation-delay:.22s}
+#home.on .cd-grid > div:nth-child(2){animation-delay:.28s}
+#home.on .cd-grid > div:nth-child(3){animation-delay:.34s}
+#home.on .cd-grid > div:nth-child(4){animation-delay:.4s}
+
+/* รูปผังสถานที่จางเข้านุ่ม ๆ */
+#map.on .map-img{animation:mFade .7s var(--ease) .1s backwards}
+
+/* ---------- 2) เมนูนำทาง ---------- */
+.nav button,.dnav button{
+  transition:color .28s var(--ease),background-color .28s var(--ease),border-color .28s var(--ease),transform .18s var(--ease);
+  -webkit-tap-highlight-color:transparent;
+}
+.nav button svg.i,.dnav button svg.i{transition:transform .3s var(--ease-out)}
+.nav button:active,.dnav button:active{transform:scale(.95)}
+.nav button:active svg.i,.dnav button:active svg.i{transform:translateY(-1px) scale(1.08)}
+@media (hover:hover) and (pointer:fine){
+  .nav button:hover svg.i,.dnav button:hover svg.i{transform:translateY(-1px) scale(1.08)}
+}
+
+/* ---------- 3) ปุ่ม CTA / ลิงก์ ---------- */
+.cta,.loc-card .maplink,.qa-contact a{
+  transition:transform .22s var(--ease),box-shadow .22s var(--ease),background-color .22s var(--ease),filter .22s var(--ease);
+  -webkit-tap-highlight-color:transparent;
+}
+.cta svg{transition:transform .28s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){
+  .cta:hover{transform:translateY(-2px);box-shadow:0 5px 0 var(--teal-d),0 10px 18px rgba(18,51,96,.22);filter:brightness(1.06)}
+  .cta.alt:hover{box-shadow:0 5px 0 #0c2c70,0 10px 18px rgba(18,51,96,.22)}
+  .cta:hover svg{transform:translateX(3px)}
+  .loc-card .maplink:hover{background:var(--line);transform:translateY(-1px)}
+  .qa-contact a:hover{transform:translateY(-1px);box-shadow:0 3px 0 var(--teal-d);filter:brightness(1.08)}
+}
+.cta:active{transform:translateY(2px) scale(.99);box-shadow:0 1px 0 var(--teal-d);filter:none}
+.cta.alt:active{box-shadow:0 1px 0 #0c2c70}
+.loc-card .maplink:active{transform:scale(.97)}
+.qa-contact a:active{transform:translateY(1px) scale(.97);box-shadow:0 0 0 var(--teal-d)}
+
+/* ---------- 4) การ์ดต่าง ๆ ---------- */
+.card,.chip,.pop,.loc-card,.qa-contact,.cd-grid div{
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease),background-color .3s var(--ease);
+}
+@media (hover:hover) and (pointer:fine){
+  .chip:hover,.pop:hover,.loc-card:hover,.cd-grid div:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(23,56,107,.1);border-color:#c5d3e6}
+  details.card:hover{border-color:#c5d3e6;box-shadow:0 4px 14px rgba(23,56,107,.08)}
+}
+details.card[open]{border-color:#c5d3e6}
+
+/* การ์ดรางวัล: ปรับให้ลื่นขึ้น */
+.pc{transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
+.pc:active{transform:scale(.98)}
+.pc .n{transition:transform .3s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){
+  .pc:hover .n{transform:scale(1.1) rotate(-4deg)}
+}
+
+/* รายละเอียดรางวัลบนมือถือ/ทัช: ค่อย ๆ กางออก */
+@media not all and (hover:hover) and (pointer:fine){
+  .pc .detail{
+    display:none;opacity:0;transform:translateY(-6px);
+    transition:opacity .3s var(--ease),transform .3s var(--ease),display .3s allow-discrete;
+  }
+  .pc.open .detail{display:block;opacity:1;transform:none}
+  @starting-style{.pc.open .detail{opacity:0;transform:translateY(-6px)}}
+}
+
+/* ---------- 5) กติกา / Q&A (details) กางหุบนุ่ม ๆ ---------- */
+summary{transition:color .25s var(--ease),background-color .25s var(--ease);-webkit-tap-highlight-color:transparent}
+summary::after{transition:color .25s var(--ease),transform .3s var(--ease-out)}
+details.card summary{border-radius:12px}
+@media (hover:hover) and (pointer:fine){
+  summary:hover{color:var(--teal)}
+  summary:hover::after{transform:scale(1.2)}
+}
+details.card:active > summary::after{transform:scale(.85)}
+
+details.card::details-content{
+  block-size:0;overflow:hidden;
+  transition:block-size .4s var(--ease),content-visibility .4s allow-discrete;
+}
+details.card[open]::details-content{block-size:auto}
+
+/* เนื้อหาที่กางออกจางเข้า (ใช้ได้ทุกเบราว์เซอร์) */
+@keyframes mDrop{
+  from{opacity:0;transform:translateY(-6px)}
+  to{opacity:1;transform:none}
+}
+details[open] > :not(summary){animation:mDrop .4s var(--ease) backwards}
+.rd[open] .sub li{animation:mDrop .45s var(--ease) backwards}
+.rd[open] .sub li:nth-child(1){animation-delay:.04s}
+.rd[open] .sub li:nth-child(2){animation-delay:.08s}
+.rd[open] .sub li:nth-child(3){animation-delay:.12s}
+.rd[open] .sub li:nth-child(4){animation-delay:.16s}
+.rd[open] .sub li:nth-child(n+5){animation-delay:.2s}
+
+/* ---------- 6) นับถอยหลัง: จุดสถานะเต้นเบา ๆ ---------- */
+@keyframes mPulse{
+  0%{box-shadow:0 0 0 0 rgba(18,51,96,.35)}
+  70%{box-shadow:0 0 0 7px rgba(18,51,96,0)}
+  100%{box-shadow:0 0 0 0 rgba(18,51,96,0)}
+}
+.cd-status:not(.closed)::before{animation:mPulse 2s ease-out infinite}
+
+/* ---------- 7) โฟกัสคีย์บอร์ดเนียน ๆ ---------- */
+.pc,.cta,.maplink,.nav button,.dnav button,summary{outline-offset:3px}
+
+/* ---------- 8) ผู้ใช้ที่ปิดแอนิเมชันในระบบ ---------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important;transition-delay:0s!important;
+  }
+}
 </style>
 </head>
 <body>
